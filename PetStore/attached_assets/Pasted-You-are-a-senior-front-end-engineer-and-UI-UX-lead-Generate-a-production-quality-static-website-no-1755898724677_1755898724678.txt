@@ -1,0 +1,60 @@
+You are a senior front‑end engineer and UI/UX lead.
+Generate a production‑quality static website (no backend required) with index.html + style.css + app.js that sells Grow a Garden items.
+Design language: Block/Brick UI (lego‑like bricks, chunky rounded rectangles, bold labels), clean typography, high contrast, soft shadows, playful micro‑interactions. Do not use product images. Use text, emoji, and brick‑style placeholders.
+
+Goals
+	1.	Ultra‑clean, professional storefront with Home, Shop, Cart/Checkout (stub), FAQ, Contact/Discord, Policy pages.
+	2.	No images for products—cards show name, badges, prices, savings, and “Add to Cart” only.
+	3.	Discord CTA: persistent button and a “Join our Discord” section.
+	4.	Smooth, tasteful animations consistent with the game’s style (no heavy libs).
+	5.	Fully responsive (mobile‑first), accessible (ARIA, focus states, keyboard nav).
+	6.	Vanilla HTML/CSS/JS only; no frameworks/packages/CDNs.
+
+Brand & Style
+	•	Name: The Garden Vault (you can also mention Grow a Garden in copy).
+	•	Palette: leaf green, sky blue, soil brown, brick red, gold accents.
+	•	Fonts: system UI or a single web‑safe stack.
+	•	Components look like stacked bricks/blocks with a subtle stud/brick texture using pure CSS (no external images).
+	•	Buttons: chunky, rounded 10–14px radius, bold labels, hover “lift” + tiny bounce.
+	•	Badges: rectangular “stud” chips (e.g., “24H SALE”, “Limited Deal”).
+	•	Icons: text/emoji only (🌱🐝🧱💎), no image files.
+
+Pages & Sections
+	•	Header/Nav: logo text at left; links: Home, Shop, FAQ, Policies, Contact. Right side: Search, Cart (item count), Join Discord button.
+	•	Hero (Home): tagline, short description, “Shop Deals” and “Join Discord” buttons.
+	•	Highlights: three bricks for “24H Sales”, “Sheckles Deals”, “All Pets”.
+	•	Shop (main): tabs or filters for Sales, Sheckles Deals, All Pets (with sub‑filters Limited Deals and Regular Pets).
+	•	Product Card (no image):
+	•	Name (bold), optional emoji, badges, original price struck, sale price prominent, auto % saved, “Add to Cart” button, tiny note (e.g., “Delivery via in‑game trade/terms”).
+	•	Keyboard accessible; button shows toast “Added to cart”.
+	•	Cart/Checkout (stub): list items, qty +/- , remove, subtotal, fees (0), total, “Proceed” (disabled by default with note “Checkout handled via Discord or in‑game—see instructions”).
+	•	Discord CTA: large brick block with copy + button.
+	•	FAQ: delivery method, timing, refunds, safety.
+	•	Policies: Terms, Privacy, Refunds (simple text pages).
+	•	Footer: links + small disclaimer: “Not affiliated with Roblox. Virtual items only.”
+
+Interactions & Animations
+	•	Page transitions: fade/slide 150–250ms.
+	•	Buttons: hover lift (translateY‑2px) + shadow; active press (translateY1px).
+	•	Tabs/filters: animated underline.
+	•	Toasters for cart events.
+	•	Respect prefers-reduced-motion.
+
+Accessibility
+	•	Semantic HTML landmarks.
+	•	Labels for all controls; ARIA where needed.
+	•	Focus rings clearly visible.
+	•	All actions keyboard‑operable.
+
+Performance/SEO
+	•	Single request per file; inline minimal SVG only if needed.
+	•	Meta title/description, OpenGraph, favicon as data URL if needed.
+	•	Defer JS, minify where reasonable.
+
+Data & Logic
+
+Load the catalog from a constant JS array (below).
+Features: search, category chips, sort (Price ↑/↓, Savings %, A→Z), and filters (Sales / Sheckles / Limited / Regular).
+Compute savings% = (oldPrice − price) / oldPrice. Format prices in USD with 2 decimals where needed.
+
+Catalog (use exactly these items and prices)

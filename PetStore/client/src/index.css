@@ -1,0 +1,327 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Garden Vault Brand Colors */
+  --leaf-green: hsl(142, 62%, 44%);
+  --leaf-green-dark: hsl(142, 75%, 35%);
+  --leaf-green-light: hsl(142, 72%, 58%);
+  --sky-blue: hsl(199, 89%, 48%);
+  --sky-blue-dark: hsl(199, 95%, 39%);
+  --sky-blue-light: hsl(199, 95%, 59%);
+  --soil-brown: hsl(36, 93%, 33%);
+  --soil-brown-dark: hsl(25, 85%, 28%);
+  --soil-brown-light: hsl(36, 91%, 46%);
+  --brick-red: hsl(0, 84%, 51%);
+  --brick-red-dark: hsl(0, 84%, 42%);
+  --brick-red-light: hsl(0, 84%, 60%);
+  --gold: hsl(43, 89%, 48%);
+  --gold-dark: hsl(36, 91%, 46%);
+  --gold-light: hsl(43, 86%, 58%);
+
+  /* Base theme colors */
+  --background: hsl(210, 20%, 98%);
+  --foreground: hsl(222, 25%, 11%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(222, 25%, 11%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(222, 25%, 11%);
+  --primary: hsl(142, 62%, 44%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(199, 89%, 48%);
+  --secondary-foreground: hsl(0, 0%, 100%);
+  --muted: hsl(210, 20%, 95%);
+  --muted-foreground: hsl(215, 16%, 47%);
+  --accent: hsl(210, 20%, 95%);
+  --accent-foreground: hsl(222, 25%, 11%);
+  --destructive: hsl(0, 84%, 51%);
+  --destructive-foreground: hsl(0, 0%, 100%);
+  --border: hsl(214, 32%, 91%);
+  --input: hsl(214, 32%, 91%);
+  --ring: hsl(142, 62%, 44%);
+  --radius: 0.875rem;
+
+  /* Typography */
+  --font-primary: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-sans: var(--font-primary);
+  --font-serif: Georgia, serif;
+  --font-mono: Menlo, monospace;
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-brick: 0 8px 16px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.08);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 350ms ease;
+}
+
+.dark {
+  --background: hsl(222, 25%, 11%);
+  --foreground: hsl(210, 20%, 98%);
+  --card: hsl(222, 84%, 5%);
+  --card-foreground: hsl(210, 20%, 98%);
+  --popover: hsl(222, 84%, 5%);
+  --popover-foreground: hsl(210, 20%, 98%);
+  --primary: hsl(142, 62%, 44%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(217, 32%, 17%);
+  --secondary-foreground: hsl(210, 20%, 98%);
+  --muted: hsl(217, 32%, 17%);
+  --muted-foreground: hsl(215, 20%, 65%);
+  --accent: hsl(217, 32%, 17%);
+  --accent-foreground: hsl(210, 20%, 98%);
+  --destructive: hsl(0, 84%, 51%);
+  --destructive-foreground: hsl(0, 0%, 100%);
+  --border: hsl(217, 32%, 17%);
+  --input: hsl(217, 32%, 17%);
+  --ring: hsl(142, 62%, 44%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-primary);
+  }
+
+  /* Brick Texture Components */
+  .brick-texture {
+    background-image: 
+      repeating-linear-gradient(
+        0deg,
+        rgba(255,255,255,0.1),
+        rgba(255,255,255,0.1) 1px,
+        transparent 1px,
+        transparent 8px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        rgba(255,255,255,0.05),
+        rgba(255,255,255,0.05) 1px,
+        transparent 1px,
+        transparent 16px
+      );
+  }
+
+  .brick-studs {
+    position: relative;
+  }
+
+  .brick-studs::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 25% 25%, rgba(255,255,255,0.15) 2px, transparent 2px),
+      radial-gradient(circle at 75% 25%, rgba(255,255,255,0.15) 2px, transparent 2px),
+      radial-gradient(circle at 25% 75%, rgba(255,255,255,0.15) 2px, transparent 2px),
+      radial-gradient(circle at 75% 75%, rgba(255,255,255,0.15) 2px, transparent 2px);
+    background-size: 16px 16px;
+    border-radius: inherit;
+    pointer-events: none;
+  }
+
+  /* Button Enhancements */
+  .btn-brick {
+    @apply relative overflow-hidden transition-all duration-150 ease-in-out;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+  }
+
+  .btn-brick:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .btn-brick:active {
+    transform: translateY(1px);
+  }
+
+  .btn-primary-brick {
+    background: var(--leaf-green);
+    color: white;
+  }
+
+  .btn-primary-brick:hover {
+    background: var(--leaf-green-dark);
+  }
+
+  .btn-secondary-brick {
+    background: var(--sky-blue);
+    color: white;
+  }
+
+  .btn-secondary-brick:hover {
+    background: var(--sky-blue-dark);
+  }
+
+  .btn-gold-brick {
+    background: var(--gold);
+    color: hsl(222, 25%, 11%);
+  }
+
+  .btn-gold-brick:hover {
+    background: var(--gold-dark);
+    color: white;
+  }
+
+  /* Card Enhancements */
+  .card-brick {
+    @apply bg-white border-0 transition-all duration-200 ease-in-out;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-brick);
+  }
+
+  .card-brick:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  /* Product Card Specific */
+  .product-card-brick {
+    @apply card-brick p-6 border-2 border-transparent;
+    position: relative;
+  }
+
+  .product-card-brick:hover {
+    border-color: var(--leaf-green-light);
+  }
+
+  /* Badge Styles */
+  .badge-sale {
+    background: var(--brick-red);
+    color: white;
+  }
+
+  .badge-limited {
+    background: var(--gold);
+    color: hsl(222, 25%, 11%);
+  }
+
+  .badge-savings {
+    background: var(--leaf-green);
+    color: white;
+  }
+
+  .badge-discount {
+    background: var(--sky-blue);
+    color: white;
+  }
+
+  /* Filter Chips */
+  .filter-chip {
+    @apply px-4 py-2 bg-white border-2 border-gray-300 rounded-md text-sm font-medium cursor-pointer transition-all duration-150;
+  }
+
+  .filter-chip:hover,
+  .filter-chip.active {
+    background: var(--leaf-green);
+    color: white;
+    border-color: var(--leaf-green);
+  }
+
+  /* Toast Animations */
+  @keyframes slideIn {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  .toast-slide-in {
+    animation: slideIn 0.3s ease;
+  }
+
+  /* Hero Gradient */
+  .hero-gradient {
+    background: linear-gradient(135deg, var(--leaf-green) 0%, var(--sky-blue) 100%);
+  }
+
+  .hero-pattern {
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 20px,
+      rgba(255,255,255,0.05) 20px,
+      rgba(255,255,255,0.05) 40px
+    );
+  }
+
+  /* Discord Gradient */
+  .discord-gradient {
+    background: linear-gradient(135deg, #5865f2 0%, #7289da 100%);
+  }
+
+  /* Utilities */
+  .text-leaf-green { color: var(--leaf-green); }
+  .text-sky-blue { color: var(--sky-blue); }
+  .text-soil-brown { color: var(--soil-brown); }
+  .text-brick-red { color: var(--brick-red); }
+  .text-gold { color: var(--gold); }
+
+  .bg-leaf-green { background-color: var(--leaf-green); }
+  .bg-sky-blue { background-color: var(--sky-blue); }
+  .bg-soil-brown { background-color: var(--soil-brown); }
+  .bg-brick-red { background-color: var(--brick-red); }
+  .bg-gold { background-color: var(--gold); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+  
+  .hero h1 {
+    font-size: 1.875rem;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus States for Accessibility */
+button:focus,
+input:focus,
+select:focus,
+a:focus {
+  outline: 2px solid var(--leaf-green);
+  outline-offset: 2px;
+}
+
+.btn-brick:focus {
+  outline-color: white;
+}
